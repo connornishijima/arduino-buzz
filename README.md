@@ -1,6 +1,3 @@
-![#Arduino Buzz Library](http://i.imgur.com/muq8u3K.jpg)
-
-** **
 **Arduino just got motion detection - with nothing but a wire!**
 
 **[VIDEO DEMONSTRATION](https://www.youtube.com/watch?v=4KjB-HMuUs4)**
