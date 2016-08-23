@@ -71,21 +71,33 @@ This initializes the Buzz library after import. "buzz" can be any word you want,
 
 This sets up a Timer Compare Interrupt on Timer1 for logging motion changes. It watches the ADC input defined by **pin**, does phase cancellation for **hz** AC to remove sine-wave artifacts from the data, and waits for **coolDown** milliseconds for the ADC to stabilize before triggering any alarms.
 
-**vol.setMasterVolume**(float **percentage**);
+**buzz.end**();
 
-This is a multiplier applied to the volume of any tones played. By default this is 1.00 - a value of 0.34 would make all tones 34% of their programmed volume;
+This clears the Timer1 ISR that checks motion, essentially stopping all Buzz execution.
 
-**vol.tone**(unsigned int **frequency**, byte **volume**);
+**buzz.level**();
 
-*This is where the magic happens.* At the frequency you specify, your Arduino will analogWrite(**volume**) to the speaker with a PWM frequency of 62.5KHz, for half the duration of a single period of the **frequency** before pulling it `LOW`. (Using Timer1 compare-match interrupts to maintain the input frequency) This high-speed PWM is beyond your range of hearing, (and probably the functioning range of your speaker) so it will just sound like a quieter or louder version of the input frequency!
+Returns the current motion level as a signed integer, with a minor motion giving a value of ~10, and more major motions returning ~100 or more.
 
-**vol.fadeOut**(unsigned int **duration**);
+buzz.level() can be both positive or negative depending on if the motion was towards the antenna or away from it! Use `abs(buzz.level())` to get all values as positive.
 
-This will cause the currently playing tone to fade out over the **duration** specified in milliseconds.
+**buzz.setAlarm**(void **action**, unsigned int **threshold**, unsigned int **hold**);
 
-**vol.noTone**();
+Used to set the user-provided function as the callback for an alarm trigger. If motion is >= to **threshold**, and an alarm hasn't been triggered for **hold** milliseconds, the function **action** will be called. If the function you wrote is this helloWorld() demo:
 
-This is identical in function to the standard `noTone()` function, this stops any currently playing tones.
+	void helloWorld(){
+      Serial.println("Hello world!");
+    }
+
+You would write setAlarm() like this:
+
+	buzz.setAlarm(helloWorld, 20, 500);
+    
+A current limitation is that arguments/parameters cannot be passed to the alarm function, and the function can't return data either - though a workaround is to set those values in global variables and read them wherever else your need to, inside or outside the alarm function.
+
+**buzz.checkAlarm**();
+
+This is used to see if the alarm flag has been set by Buzz. This function should be called as often as possible, and your code should avoid blocking functions like delay(). If the flag has been set true by motion exceding your custom threshold, the function defined in setAlarm() will be called.
 
 **vol.delay**();   **vol.delayMicroseconds**();
 **vol.millis**();   **vol.micros**();
