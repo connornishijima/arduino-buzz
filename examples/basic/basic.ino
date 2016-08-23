@@ -7,6 +7,7 @@
  * 
  * Once uploaded, try waving your hands near the antenna
  * and watching the output on Arduino IDE's Serial Plotter.
+ * Nothing will appear until 3 seconds after boot.
  * 
  * How it works:
  * 
