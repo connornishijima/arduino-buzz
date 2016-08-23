@@ -30,7 +30,7 @@ int16_t b_record[64] = {};       // Used to compare most current reading with on
 
 Buzz::Buzz() {}
 
-void Buzz::begin(uint16_t pin, uint8_t hz, uint16_t coolDown) {
+void Buzz::begin(uint8_t pin, uint8_t hz, uint16_t coolDown) {
   // pin = ADC pin to use for measurement
   // hz = AC electricity frequency for your region used for phase cancellation
   // coolDown = Amount of time to "cool down" - ADC is too sensitive at sketch
