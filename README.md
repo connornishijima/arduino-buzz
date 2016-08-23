@@ -2,7 +2,7 @@
 
 **[VIDEO DEMONSTRATION](https://www.youtube.com/watch?v=4KjB-HMuUs4)**
 
-By monitoring the amplitude of AC electricity waveforms in the air for changes, Buzz provides motion detection using only a wire!
+By monitoring the amplitude of AC electricity waveforms in the air for changes, Buzz provides motion detection using only a wire! It's extremely easy to implement, and a perfect library for all experience levels.
 
 ----------
 # Contents
@@ -18,19 +18,11 @@ By monitoring the amplitude of AC electricity waveforms in the air for changes, 
 ----------
 # Explanation
 
-Due to the ATMega328p's ADC being very high impedance,
-it can easily detect the AC electricity waves that leak
-into the air via open outlets, bad sheilding, and more.
+Due to the ATMega328p's ADC being very high impedance, it can easily detect the AC electricity waves that leak into the air via open outlets, bad sheilding, and more.
 
-When something statically charged (human, pet, blanket,
-etc.) passes near the antenna, it increases or decreases
-the voltage perceived at the input. Even without rubbing
-a balloon on your head, you'll always have enough static
-charge to affect this value a measurable amount.
+When something statically charged (human, pet, blanket, etc.) passes near the antenna, it increases or decreases the voltage perceived at the input. Even without rubbing a balloon on your head, you'll always have enough static charge to affect this value a measurable amount.
 
-The Buzz library allows you to easily monitor these
-changes, and attach your own functions that will execute
-when motion excedes a specified threshold.
+The Buzz library allows you to easily monitor these changes, and attach your own functions that will execute when motion excedes a specified threshold.
 
 ----------
 # Installation
@@ -71,13 +63,13 @@ Next, connect a wire/jumper (6-12") to pin A0, and open the Arduino IDE's Serial
 ----------
 # Functions
 
-**Volume vol**;
+**Buzz buzz**;
 
-This initializes the Volume library after import. "vol" can be any word you want, as long as it's reflected in the rest of your code.
+This initializes the Buzz library after import. "buzz" can be any word you want, as long as it's reflected in the rest of your code.
 
-**vol.begin**();
+**buzz.begin**(byte **pin**, byte **hz**, unsigned int **coolDown**);
 
-This sets up a Timer Compare Interrupt on Timer1 for the tone frequencies. (You won't hear anything until a `vol.tone()` is called.)
+This sets up a Timer Compare Interrupt on Timer1 for logging motion changes. It watches the ADC input defined by **pin**, does phase cancellation for **hz** AC to remove sine-wave artifacts from the data, and waits for **coolDown** milliseconds for the ADC to stabilize before triggering any alarms.
 
 **vol.setMasterVolume**(float **percentage**);
 
