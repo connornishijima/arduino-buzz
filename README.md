@@ -52,7 +52,7 @@ The Buzz library allows you to easily monitor these changes, and attach your own
 
 Using the Buzz library is very simple, you only need the following to get started:
 
-    #include "Buzz.h" // Include the Volume library
+    #include "Buzz.h" // Include the Buzz library
     Buzz buzz;
 
     void setup() {
