@@ -5,12 +5,16 @@
 By monitoring the amplitude of AC electricity waveforms in the air for changes, Buzz provides motion detection using only a wire! It's extremely easy to implement, and a perfect library for all experience levels.
 
 ----------
+# Disclaimer
+
+The Buzz library is just for experimental use only, and is **not** intended for providing a home/business security solution.
+
+----------
 # Contents
 - [Explanation](#explanation)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Functions](#functions)
-- [Supported Pins](#supported-pins)
 - [Limitations](#limitations)
 - [Contributing](#contributing)
 - [License and credits](#license-and-credits)
@@ -27,7 +31,7 @@ The Buzz library allows you to easily monitor these changes, and attach your own
 ----------
 # Installation
 
-~~**With Arduino Library Manager:**~~ Coming soon!
+~~With Arduino Library Manager:~~ **Coming soon!**
 
 ~~1. Open *Sketch > Include Library > Manage Libraries* in the Arduino IDE.~~
 
@@ -93,67 +97,23 @@ You would write setAlarm() like this:
 
 	buzz.setAlarm(helloWorld, 20, 500);
     
-A current limitation is that arguments/parameters cannot be passed to the alarm function, and the function can't return data either - though a workaround is to set those values in global variables and read them wherever else your need to, inside or outside the alarm function.
+A current limitation is that arguments/parameters cannot be passed to the alarm function, and the function can't return data either - though a workaround is to set those values in global variables and read them wherever else your need to, inside or outside the alarm function. See [Limitations](#limitations).
 
 **buzz.checkAlarm**();
 
 This is used to see if the alarm flag has been set by Buzz. This function should be called as often as possible, and your code should avoid blocking functions like delay(). If the flag has been set true by motion exceding your custom threshold, the function defined in setAlarm() will be called.
 
-**vol.delay**();   **vol.delayMicroseconds**();
-**vol.millis**();   **vol.micros**();
+**buzz.printData**()
 
-These are replacements to the standard time-keeping Arduino functions designed to compensate for the changes in the Timer0 clock divisor. See [Limitations](#limitations).
-
-**vol.end**();
-
-This stops any currently playing tones, and resets Timer0 to it's default functionality. Creative use of `vol.begin()` and `vol.end()` can usually resolve conflicts with other libraries or functions that might need Timer0 (volume) or Timer1 (frequency) to be in their usual settings.
-
-**vol.alternatePin**(bool **enabled**);
-
-This causes the AVR to use the ALTERNATE_PIN defined in the [Supported Pins](#supported-pins) section for sound production.
-
-----------
-# Supported Pins
-
-By default, the library uses DEFAULT_PIN for the speaker, *(changes from board to board due to Timer0 channels)* but if you need this pin for digitalWrite's, you can call *vol.alternatePin(**true**)* to use ALTERNATE_PIN instead.
-
-| Board                           | DEFAULT_PIN | ALTERNATE_PIN | Tested |
-|---------------------------------|-------------|---------------|--------|
-| (**Uno**) ATmega168/328(pb)     | 5           | 6             | YES    |
-| (**Mega**) ATmega1280/2560      | 4           | 13            | YES    |
-| (**Leo/Micro**) ATmega16u2/32u4 | 9           | 10            | YES*   |
-
-*I recently killed my only ATmega32u4 board while stripping it for low-power usage and don't have one to test current releases of the library. If anyone who has a working one wants to report compatibility back to me, please do so as I've only tested the initial release!
+This renders a graph to the Arduino IDE Serial Plotter containing current motion levels, your threshold for alarm, and marks when alarms were triggered. Nothing will appear in the plotter until the **coolDown** from buzz.begin() has passed.
 
 ----------
 # Limitations
-Unfortunately, cheating the Arduino's normal functions in this way means we'll lose some of them. This is also still a proof-of-concept library at this point, so it may break more functionality than I'm aware of. Sorry!
+Unfortunately, a solution this inexpensive has it's caveats:
 
-~~**16MHz Only:**~~
+**Buzz is susceptable to false positives:**
 
-~~I haven't programmed in options for 8MHz boards yet, though if you want to use one, just replace all occurrences of "16000000" in the library files with "8000000" and it may work.~~
-
-Automatic detection of CPU speed was added in version 1.0.2!
-
-**ATmega* Only:**
-
-I don't know if I'll have this working on ATTiny*5 boards any time soon, though it's theoretically possible on any AVR with >= 2 timers. For now, it's only confirmed working on Arduino Uno (ATMega168/328) and Mega. (ATMega1280/2560)
-
-**Volume is limited to pins ~~5 & 6:~~**
-
-This is because only pins ~~5 & 6~~ are driven by Timer0, *which can do PWM at a frequency higher than your hearing range!* This is the main trick behind the volume function. It also means that while you're using Volume, normal `analogWrite()` use probably won't work on these two pins.
-
-*Now that the Mega168, 328, 1280, 2560, 16u2/32u4 and more are now supported, the supported pins differs from board to board. See [Supported Pins](#supported-pins) section.*
-
-**Volume alters Timer0 for 62.5KHz PWM:**
-
-Speaking of Timer0 - it's normally used for the `delay()`, `delayMicroseconds()`, `millis()` and `micros()` functions. Normally with Timer0 set with a divisor of 64, `delay(1000)` would wait for 1 second - but because Volume sets Timer0 with a divisor of 1, `delay(1000)` will now only wait for 15.625ms! But don't worry. Volume provides alternative `vol.delay(time)` and `vol.delayMicroseconds(time)` functions with the math fixed for you. This new divisor is necessary to drive PWM at 62.5KHz, faster than you can hear.
-
-~~**Volume does not yet offer fixed millis() or micros() functions:**~~
-
-~~I haven't gotten around to toying with these yet. If you need to use `millis()` or `micros()` BETWEEN playing sounds, just use a `vol.end()` to reset Timer0 to it's default function, and `vol.begin()` to use it for Volume again after you're done.~~
-
-Version 1.1.1 added proper millis() and micros() support! See [Functions](#functions).
+Because we're relying on AC and static electricity for our readings, it's trivial to cause interference to the input by turning on power appliances nearby, or picking up local lighting strikes. (Though the latter is a cool use as well!)
 
 ----------
 # Contributing
