@@ -28,7 +28,7 @@ Due to the ATMega328p's ADC being very high impedance, it can easily detect the 
 
 When something statically charged (human, pet, blanket, etc.) passes near the antenna, it increases or decreases the voltage perceived at the input. Even without rubbing a balloon on your head, you'll always have enough static charge to affect this value a measurable amount.
 
-The Buzz library allows you to easily monitor these changes, and attach your own functions that will execute when motion exceedes a specified threshold.
+The Buzz library allows you to easily monitor these changes, and attach your own functions that will execute when motion exceeds a specified threshold.
 
 ----------
 # Installation
