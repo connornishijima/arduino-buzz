@@ -119,6 +119,10 @@ Because we're relying on AC and static electricity for our readings, it's trivia
 
 While a human like yourself always has enough static charge to cause a measurable shift in ADC voltage, cats are covered in electron-loving fur. It's much more sensitive to them! A solution is to make your cat wear an anti-static soldering strap at all times, but so far I've been unsuccessful in implementing this. We're working on it.
 
+**Phase cancellation has only been tested with 60Hz AC**
+
+While it shouldn't make a huge difference without it, the phase cancellation has been **tested** for 60Hz AC, and **calculated** for 50Hz AC. 50Hz users may want to report results back to me if the defaults need changes.
+
 ----------
 # Contributing
 Any advice or pull requests are welcome! :)
