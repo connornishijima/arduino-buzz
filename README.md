@@ -83,7 +83,7 @@ This clears the Timer1 ISR that checks motion, essentially stopping all Buzz exe
 
 Returns the current motion level as a signed integer, with a minor motion giving a value of ~10, and more major motions returning ~100 or more.
 
-buzz.level() can be both positive or negative depending on if the motion was towards the antenna or away from it! Use `abs(buzz.level())` to get all values as positive.
+`buzz.level()` can be both positive or negative depending on if the motion was towards the antenna or away from it! Use `abs(buzz.level())` to get all values as positive.
 
 **buzz.setAlarm**(void **action**, unsigned int **threshold**, unsigned int **hold**);
 
@@ -93,7 +93,7 @@ Used to set the user-provided function as the callback for an alarm trigger. If 
       Serial.println("Hello world!");
     }
 
-You would write setAlarm() like this:
+You would write `setAlarm()` like this:
 
 	buzz.setAlarm(helloWorld, 20, 500);
     
@@ -105,24 +105,26 @@ This is used to see if the alarm flag has been set by Buzz. This function should
 
 **buzz.printData**()
 
-This renders a graph to the Arduino IDE Serial Plotter containing current motion levels, your threshold for alarm, and marks when alarms were triggered. Nothing will appear in the plotter until the **coolDown** from buzz.begin() has passed.
+This renders a graph to the Arduino IDE Serial Plotter containing current motion levels, your threshold for alarm, and marks when alarms were triggered. Nothing will appear in the plotter until the **coolDown** from `buzz.begin()` has passed.
 
 ----------
 # Limitations
-Unfortunately, a solution this inexpensive has it's caveats:
+Unfortunately, a solution this simple has it's caveats:
 
 **Buzz is susceptable to false positives:**
 
 Because we're relying on AC and static electricity for our readings, it's trivial to cause interference to the input by turning on power appliances nearby, or picking up local lighting strikes. (Though the latter is a cool use as well!)
 
+**Buzz loves cats:**
+
+While a human like yourself always has enough static charge to cause a measurable shift in ADC voltage, cats are covered in electron-loving fur. It's much more sensitive to them! A solution is to make your cat wear an anti-static soldering strap at all times, but so far I've been unsuccessful in implementing this. We're working on it.
+
 ----------
 # Contributing
-As I've only written one library before for my own use, I'm still new to this! Any advice or pull requests are welcome. :)
+Any advice or pull requests are welcome! :)
 
 ----------
 # License and Credits
 **Developed by Connor Nishijima (2016)**
-
-**Special Thanks to Andrew Neal** (For putting up with the incessant and inconsistent artificial "cricket-duino" hidden in his vent that I developed this library for.)
 
 **Released under the [GPLv3 license](http://www.gnu.org/licenses/gpl-3.0.en.html).**
