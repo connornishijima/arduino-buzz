@@ -2,7 +2,7 @@
 
 **Arduino just got motion detection - with nothing but a wire!**
 
-**[VIDEO DEMONSTRATION](https://www.youtube.com/watch?v=4KjB-HMuUs4)**
+# [VIDEO DEMONSTRATION](https://www.youtube.com/watch?v=4KjB-HMuUs4)
 
 By monitoring the amplitude of AC electricity waveforms in the air for changes, Buzz provides motion detection using only a wire! It's extremely easy to implement, and a perfect library for all experience levels.
 
