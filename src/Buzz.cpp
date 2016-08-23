@@ -169,7 +169,8 @@ ISR(TIMER1_COMPA_vect) {
     b_record[i] = b_record[i + 1];
   }
   b_record[63] = b_motionLevel;
-  b_buzzRead = b_motionLevel - b_record[0];
+  b_buzzRead = (b_motionLevel - b_record[0])*-1; // inverted so that movement towards antenna
+                                                 // is a positive shift in the log
 
   // If buzzRead is >= buzzThreshold, we're past the buzzWait, and
   //we haven't had another alarm too recently, set the alarm flag to true.
