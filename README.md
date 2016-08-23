@@ -33,13 +33,11 @@ The Buzz library allows you to easily monitor these changes, and attach your own
 ----------
 # Installation
 
-~~With Arduino Library Manager:~~ **Coming soon!**
+**With Arduino Library Manager:**
 
-~~1. Open *Sketch > Include Library > Manage Libraries* in the Arduino IDE.~~
-
-~~2. Search for "Buzz", (look for "Connor Nishijima") and select the latest version.~~
-
-~~3. Click the Install button and Arduino will prepare the library and examples for you!~~
+1. Open *Sketch > Include Library > Manage Libraries* in the Arduino IDE.
+2. Search for "Buzz", (look for "Connor Nishijima") and select the latest version.
+3. Click the Install button and Arduino will prepare the library and examples for you!
 
 **Manual Install:**
 
