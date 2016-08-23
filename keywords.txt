@@ -1,0 +1,23 @@
+###################################
+# Syntax Coloring Map for Buzz
+###################################
+
+###################################
+# Datatypes (KEYWORD1)
+###################################
+
+###################################
+# Methods and Functions (KEYWORD2)
+###################################
+
+begin	KEYWORD2
+end	KEYWORD2
+buzz	KEYWORD2
+setAlarm	KEYWORD2
+checkAlarm	KEYWORD2
+printData	KEYWORD2
+level	KEYWORD2
+
+###################################
+# Constants (LITERAL1)
+###################################
