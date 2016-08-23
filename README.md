@@ -24,11 +24,11 @@ The Buzz library is just for experimental use only, and is **not** intended for 
 ----------
 # Explanation
 
-Due to the ATMega328p's ADC being very high impedance, it can easily detect the AC electricity waves that leak into the air via open outlets, bad sheilding, and more.
+Due to the ATMega328p's ADC being very high impedance, it can easily detect the AC electricity waves that leak into the air via open outlets, bad shielding, and more.
 
 When something statically charged (human, pet, blanket, etc.) passes near the antenna, it increases or decreases the voltage perceived at the input. Even without rubbing a balloon on your head, you'll always have enough static charge to affect this value a measurable amount.
 
-The Buzz library allows you to easily monitor these changes, and attach your own functions that will execute when motion excedes a specified threshold.
+The Buzz library allows you to easily monitor these changes, and attach your own functions that will execute when motion exceedes a specified threshold.
 
 ----------
 # Installation
