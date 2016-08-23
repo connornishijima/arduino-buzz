@@ -12,10 +12,10 @@ class Buzz
 {
   public:
     Buzz();
-    void begin(uint16_t pin, uint8_t hz, uint16_t wait);
+    void begin(uint8_t pin, uint8_t hz, uint16_t coolDown);
     void end();
     void printData();
-    void setAlarm(void (*g)(), uint16_t thresh, uint16_t hold);
+    void setAlarm(void (*action)(), uint16_t thresh, uint16_t hold);
     void checkAlarm();
     int16_t level();
 };
