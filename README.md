@@ -113,11 +113,11 @@ This renders a graph to the Arduino IDE Serial Plotter containing current motion
 # Limitations
 Unfortunately, a solution this simple has it's caveats:
 
-**Buzz is susceptable to false positives:**
+**Buzz is susceptable to false positives**
 
 Because we're relying on AC and static electricity for our readings, it's trivial to cause interference to the input by turning on power appliances nearby, or picking up local lighting strikes. (Though the latter is a cool use as well!)
 
-**Buzz loves cats:**
+**Buzz loves cats**
 
 While a human like yourself always has enough static charge to cause a measurable shift in ADC voltage, cats are covered in electron-loving fur. It's much more sensitive to them! A solution is to make your cat wear an anti-static soldering strap at all times, but so far I've been unsuccessful in implementing this. We're working on it.
 
