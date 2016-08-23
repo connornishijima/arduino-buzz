@@ -9,7 +9,7 @@ By monitoring the amplitude of AC electricity waveforms in the air for changes, 
 ----------
 # Disclaimer
 
-The Buzz library is just for experimental use only, and is **not** intended for providing a home/business security solution.
+The Buzz library is just for experimental use only, and is **not intended for providing a home/business security solution**.
 
 ----------
 # Contents
