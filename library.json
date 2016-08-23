@@ -1,6 +1,6 @@
 {
   "name": "Buzz",
-  "description": "AC-based motion detection using only the ADC and a wire!",
+  "description": "AC/static electricity-based motion detection using only the ADC and a wire!",
   "keywords": "motion,detection,alarm,adc,ac,wire",
   "authors":
   {
