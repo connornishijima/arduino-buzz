@@ -125,6 +125,10 @@ While a human like yourself always has enough static charge to cause a measurabl
 
 While it shouldn't make a huge difference without it, the phase cancellation has been **tested** for 60Hz AC, and **calculated** for 50Hz AC. 50Hz users may want to report results back to me if the defaults need changes.
 
+**Buzz disables PWM on Pin 9 and 10**
+
+Buzz uses Hardware Timer 1 to watch motion data "in the background" while your standard code runs. Timer1 is also responsible for PWM on 9 and 10, and it can't do both. If you desperately need to, call `buzz.end()`, run your PWM, then `buzz.begin()` again.
+
 ----------
 # Contributing
 Any advice or pull requests are welcome! :)
