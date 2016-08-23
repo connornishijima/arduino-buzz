@@ -1,0 +1,22 @@
+{
+  "name": "Buzz",
+  "description": "AC-based motion detection using only the ADC and a wire!",
+  "keywords": "motion,detection,alarm,adc,ac,wire",
+  "authors":
+  {
+    "name": "Connor Nishijima",
+    "email": "connornishijima@gmail.com"
+  },
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/connornishijima/arduino-buzz.git"
+  },
+  "version": "1.0.0",
+  "examples": "examples/*.ino",
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr"
+  ]
+}
