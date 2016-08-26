@@ -1,5 +1,6 @@
 /*
  * Buzz Motion Detection Example
+ * by Connor Nishijima
  * 
  * This sketch provides basic Buzz library functionality,
  * allowing the user to detect motion using an open wire
