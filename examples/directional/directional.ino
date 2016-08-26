@@ -1,5 +1,6 @@
 /*
    Buzz Directional Motion Example
+   by Connor Nishijima
 
    Buzz allows a user to detect whether the motion was
    towards or away from the antenna. To do this, we simply
