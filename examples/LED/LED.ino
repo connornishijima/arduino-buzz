@@ -1,5 +1,6 @@
 /*
  * Buzz LED Example
+ * by Connor Nishijima
  * 
  * This sketch maps motion readings to 8-bit LED brightness
  * (0-255) for an easy display.
