@@ -127,6 +127,10 @@ While it shouldn't make a huge difference without it, the phase cancellation has
 
 Buzz uses Hardware Timer 1 to watch motion data "in the background" while your standard code runs. Timer1 is also responsible for PWM on 9 and 10, and it can't do both. If you desperately need to, call `buzz.end()`, run your PWM, then `buzz.begin()` again.
 
+**Buzz will only work with direct grounding**
+
+The phenomenon this technique relies on requires the Arduino/ATmega to be fully connected to ground. This means that while it will work on a computer's USB port, it will not work directly on a 5V phone charger/wall adapter due to galvanic isolation. This is solved by tying one of the microcontroller's GND pins to a true ground like your house's grounding, or to the common of an appliance. (E.g. the back of a fridge, or the outside of a metal lamp.
+
 ----------
 # Contributing
 Any advice or pull requests are welcome! :)
